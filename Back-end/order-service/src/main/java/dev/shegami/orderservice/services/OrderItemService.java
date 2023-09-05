@@ -1,2 +1,4 @@
-package dev.shegami.orderservice.services;public interface OrderItemService {
+package dev.shegami.orderservice.services;
+
+public interface OrderItemService {
 }

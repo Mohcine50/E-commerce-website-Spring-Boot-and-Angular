@@ -1,4 +1,4 @@
-package com.shegami.securityJwt.Utils;
+package dev.shegami.securityservice.Utils;
 
 import com.nimbusds.jose.shaded.gson.JsonObject;
 import jakarta.servlet.http.HttpServletRequest;

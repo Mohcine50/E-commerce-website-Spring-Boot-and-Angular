@@ -1,6 +1,5 @@
-package dev.shegami.cartservice.models;
+package dev.shegami.profileservice.models;
 
-import jakarta.persistence.Column;
 import lombok.Data;
 
 @Data

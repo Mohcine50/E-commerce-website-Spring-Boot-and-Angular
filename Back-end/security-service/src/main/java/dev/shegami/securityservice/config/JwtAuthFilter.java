@@ -1,16 +1,11 @@
-package com.shegami.securityJwt.config;
+package dev.shegami.securityservice.config;
 
 import com.nimbusds.jose.shaded.gson.JsonObject;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpServletResponseWrapper;
 import lombok.AllArgsConstructor;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
-import org.springframework.http.MediaType;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.jwt.Jwt;
@@ -18,13 +13,13 @@ import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import org.springframework.web.util.ContentCachingRequestWrapper;
 
-import java.io.*;
+import java.io.IOException;
 import java.time.Instant;
 
-import static com.shegami.securityJwt.Utils.RequestManagement.resolveToken;
-import static com.shegami.securityJwt.Utils.RequestManagement.writeResponse;
+import static dev.shegami.securityservice.Utils.RequestManagement.resolveToken;
+import static dev.shegami.securityservice.Utils.RequestManagement.writeResponse;
+
 
 @AllArgsConstructor
 @Component
@@ -46,7 +41,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         requestedURI = request.getRequestURI();
 
-        if (requestedURI.contains("/api/auth/") || requestedURI.contains("/v3/api-docs") || requestedURI.contains("/swagger-ui/")) {
+        if (requestedURI.contains("/api/auth/") || requestedURI.contains("/v3/api-docs") || requestedURI.contains("/swagger-ui/") || requestedURI.contains("api/user/")) {
 
             filterChain.doFilter(request, response);
             return;
@@ -83,6 +78,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 writeResponse(response, HttpServletResponse.SC_FORBIDDEN, jsonObject);
                 return;
             }
+
 
             filterChain.doFilter(request, response);
 

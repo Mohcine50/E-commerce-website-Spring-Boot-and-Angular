@@ -1,7 +1,6 @@
-package com.shegami.securityJwt.services;
+package dev.shegami.securityservice.services;
 
-import com.shegami.securityJwt.entities.AppUser;
-import com.shegami.securityJwt.services.AccountService;
+import dev.shegami.securityservice.entities.AppUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

@@ -1,4 +1,4 @@
-package com.shegami.securityJwt.config;
+package dev.shegami.securityservice.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

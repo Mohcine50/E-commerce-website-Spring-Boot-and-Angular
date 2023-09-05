@@ -1,13 +1,13 @@
-package dev.shegami.securityservice.config;
+package dev.shegami.orderservice.config;
 
 import com.nimbusds.jose.shaded.gson.JsonObject;
+import dev.shegami.orderservice.models.AppUser;
+import dev.shegami.orderservice.services.AccountClientService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtException;
@@ -16,9 +16,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.time.Instant;
-
-import static dev.shegami.securityservice.Utils.RequestManagement.resolveToken;
-import static dev.shegami.securityservice.Utils.RequestManagement.writeResponse;
+import static dev.shegami.orderservice.Utils.RequestManagement.resolveToken;
+import static dev.shegami.orderservice.Utils.RequestManagement.writeResponse;
 
 
 @AllArgsConstructor
@@ -26,7 +25,7 @@ import static dev.shegami.securityservice.Utils.RequestManagement.writeResponse;
 public class JwtAuthFilter extends OncePerRequestFilter {
 
     private final JwtDecoder jwtDecoder;
-    private final UserDetailsService userDetailsService;
+    private final AccountClientService accountClientService;
 
 
     @Override
@@ -41,7 +40,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         requestedURI = request.getRequestURI();
 
-        if (requestedURI.contains("/api/auth/") || requestedURI.contains("/v3/api-docs") || requestedURI.contains("/swagger-ui/")) {
+        if (requestedURI.contains("/v3/api-docs") || requestedURI.contains("/swagger-ui/")) {
 
             filterChain.doFilter(request, response);
             return;
@@ -59,7 +58,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         try {
             Jwt jwt = jwtDecoder.decode(jwtToken);
 
-            UserDetails userDetails = userDetailsService.loadUserByUsername(jwt.getSubject());
+            AppUser userDetails = accountClientService.loadUserByUsername(jwt.getSubject());
 
             if (userDetails == null) {
                 jsonObject.addProperty("Message", "NO USER WITH THIS USERNAME");
@@ -78,7 +77,6 @@ public class JwtAuthFilter extends OncePerRequestFilter {
                 writeResponse(response, HttpServletResponse.SC_FORBIDDEN, jsonObject);
                 return;
             }
-
             filterChain.doFilter(request, response);
 
         } catch (JwtException exception) {

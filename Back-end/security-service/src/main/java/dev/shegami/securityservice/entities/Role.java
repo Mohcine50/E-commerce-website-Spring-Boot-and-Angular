@@ -1,4 +1,4 @@
-package com.shegami.securityJwt.entities;
+package dev.shegami.securityservice.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

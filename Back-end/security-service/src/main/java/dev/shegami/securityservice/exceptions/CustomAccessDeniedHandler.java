@@ -1,4 +1,4 @@
-package com.shegami.securityJwt.exceptions;
+package dev.shegami.securityservice.exceptions;
 
 import com.nimbusds.jose.shaded.gson.JsonObject;
 import jakarta.servlet.ServletException;
@@ -9,7 +9,6 @@ import org.springframework.http.MediaType;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package dev.shegami.securityservice.config;
+package dev.shegami.cartservice.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

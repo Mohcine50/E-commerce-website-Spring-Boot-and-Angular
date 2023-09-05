@@ -1,6 +1,7 @@
-package com.shegami.securityJwt.repositories;
+package dev.shegami.securityservice.repositories;
 
-import com.shegami.securityJwt.entities.Role;
+
+import dev.shegami.securityservice.entities.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface RoleRepository extends JpaRepository<Role, String> {

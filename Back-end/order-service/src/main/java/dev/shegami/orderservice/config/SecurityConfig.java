@@ -1,7 +1,7 @@
-package dev.shegami.securityservice.config;
+package dev.shegami.orderservice.config;
 
 
-import dev.shegami.securityservice.exceptions.CustomAccessDeniedHandler;
+import dev.shegami.orderservice.exceptions.CustomAccessDeniedHandler;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -31,49 +31,34 @@ import static org.springframework.security.web.util.matcher.AntPathRequestMatche
 @AllArgsConstructor
 public class SecurityConfig {
 
-    private PasswordEncoder passwordEncoder;
     private JwtAuthFilter jwtAuthenticationFilter;
     private CustomAccessDeniedHandler customAccessDeniedHandler;
-
-
-    @Bean
-    public AuthenticationManager authenticationManager(UserDetailsService userDetailsService) {
-
-        var daoAuthenticationProvider = new DaoAuthenticationProvider();
-        daoAuthenticationProvider.setPasswordEncoder(passwordEncoder);
-        daoAuthenticationProvider.setUserDetailsService(userDetailsService);
-
-        return new ProviderManager(daoAuthenticationProvider);
-    }
 
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
         return httpSecurity
-                .csrf(AbstractHttpConfigurer::disable)
-                .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
-                .authorizeHttpRequests(auth -> auth.requestMatchers(antMatcher("/api/auth/**")).permitAll()
-                        .requestMatchers(antMatcher("/v3/api-docs/**")).permitAll()
+
+                .authorizeHttpRequests(auth -> auth.requestMatchers(antMatcher("/v3/api-docs/**")).permitAll()
                         .requestMatchers(antMatcher("/swagger-ui/**")).permitAll()
+                        .requestMatchers(antMatcher("/swagger-resources/**")).permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
-                .httpBasic(Customizer.withDefaults())
-                .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/").permitAll())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .httpBasic(Customizer.withDefaults())
                 .exceptionHandling(exception -> exception.accessDeniedHandler(customAccessDeniedHandler))
                 .cors(Customizer.withDefaults())
                 .build();
     }
 
-
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
 
-        corsConfiguration.setAllowedOrigins(List.of("http://localhost:5173/"));
+        corsConfiguration.setAllowedOrigins(List.of("*"));
         corsConfiguration.setAllowedMethods(List.of("*"));
         corsConfiguration.setAllowedHeaders(List.of("*"));
         corsConfiguration.setAllowCredentials(true);

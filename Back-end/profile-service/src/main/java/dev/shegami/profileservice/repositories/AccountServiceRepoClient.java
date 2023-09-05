@@ -1,4 +1,4 @@
-package dev.shegami.cartservice.repositories;
+package dev.shegami.profileservice.repositories;
 
 
 import org.springframework.cloud.openfeign.FeignClient;

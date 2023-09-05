@@ -1,13 +1,13 @@
-package com.shegami.securityJwt.services;
+package dev.shegami.securityservice.services;
 
-import com.shegami.securityJwt.entities.AppUser;
-import com.shegami.securityJwt.entities.Role;
-import com.shegami.securityJwt.exceptions.ApiRequestException;
-import com.shegami.securityJwt.exceptions.NotFoundException;
-import com.shegami.securityJwt.repositories.AppUserRepository;
-import com.shegami.securityJwt.repositories.RoleRepository;
+
+import dev.shegami.securityservice.entities.AppUser;
+import dev.shegami.securityservice.entities.Role;
+import dev.shegami.securityservice.exceptions.ApiRequestException;
+import dev.shegami.securityservice.exceptions.NotFoundException;
+import dev.shegami.securityservice.repositories.AppUserRepository;
+import dev.shegami.securityservice.repositories.RoleRepository;
 import jakarta.transaction.Transactional;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 

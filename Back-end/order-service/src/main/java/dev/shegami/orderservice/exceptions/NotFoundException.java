@@ -1,4 +1,4 @@
-package dev.shegami.securityservice.exceptions;
+package dev.shegami.orderservice.exceptions;
 
 public class NotFoundException extends RuntimeException{
     public NotFoundException(String message) {

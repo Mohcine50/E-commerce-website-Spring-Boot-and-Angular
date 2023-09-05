@@ -1,4 +1,4 @@
-package com.shegami.securityJwt.exceptions;
+package dev.shegami.securityservice.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

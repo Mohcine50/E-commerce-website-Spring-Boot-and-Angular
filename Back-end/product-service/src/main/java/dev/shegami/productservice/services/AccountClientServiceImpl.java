@@ -1,7 +1,8 @@
-package dev.shegami.cartservice.services;
+package dev.shegami.productservice.services;
 
-import dev.shegami.cartservice.models.AppUser;
-import dev.shegami.cartservice.feignClients.AccountServiceClient;
+
+import dev.shegami.productservice.feignClients.AccountServiceClient;
+import dev.shegami.productservice.models.AppUser;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

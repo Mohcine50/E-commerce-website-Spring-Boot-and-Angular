@@ -1,7 +1,6 @@
-package dev.shegami.cartservice.services;
+package dev.shegami.orderservice.services;
 
-import dev.shegami.cartservice.models.AppUser;
-import org.springframework.stereotype.Service;
+import dev.shegami.orderservice.models.AppUser;
 
 
 public interface AccountClientService {

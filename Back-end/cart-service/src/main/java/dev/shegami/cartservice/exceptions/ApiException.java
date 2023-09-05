@@ -1,4 +1,4 @@
-package dev.shegami.securityservice.exceptions;
+package dev.shegami.cartservice.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

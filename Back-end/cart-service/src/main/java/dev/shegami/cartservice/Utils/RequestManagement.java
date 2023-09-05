@@ -1,4 +1,4 @@
-package dev.shegami.securityservice.Utils;
+package dev.shegami.cartservice.Utils;
 
 import com.nimbusds.jose.shaded.gson.JsonObject;
 import jakarta.servlet.http.HttpServletRequest;

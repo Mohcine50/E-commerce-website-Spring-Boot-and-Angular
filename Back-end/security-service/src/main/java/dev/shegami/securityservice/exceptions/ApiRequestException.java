@@ -1,4 +1,4 @@
-package com.shegami.securityJwt.exceptions;
+package dev.shegami.securityservice.exceptions;
 
 public class ApiRequestException extends RuntimeException{
     public ApiRequestException(String message) {

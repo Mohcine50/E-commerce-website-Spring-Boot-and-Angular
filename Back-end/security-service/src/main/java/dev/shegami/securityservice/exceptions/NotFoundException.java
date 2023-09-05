@@ -1,4 +1,4 @@
-package com.shegami.securityJwt.exceptions;
+package dev.shegami.securityservice.exceptions;
 
 public class NotFoundException extends RuntimeException{
     public NotFoundException(String message) {

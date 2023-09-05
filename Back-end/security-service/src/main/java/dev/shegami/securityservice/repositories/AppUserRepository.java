@@ -1,6 +1,7 @@
-package com.shegami.securityJwt.repositories;
+package dev.shegami.securityservice.repositories;
 
-import com.shegami.securityJwt.entities.AppUser;
+
+import dev.shegami.securityservice.entities.AppUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AppUserRepository extends JpaRepository<AppUser, String> {

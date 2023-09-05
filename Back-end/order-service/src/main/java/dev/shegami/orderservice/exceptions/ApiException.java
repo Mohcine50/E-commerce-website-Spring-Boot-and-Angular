@@ -1,4 +1,4 @@
-package dev.shegami.securityservice.exceptions;
+package dev.shegami.orderservice.exceptions;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

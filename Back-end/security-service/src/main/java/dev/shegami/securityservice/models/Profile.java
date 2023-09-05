@@ -1,2 +1,12 @@
-package dev.shegami.securityservice.models;public class Profile {
+package dev.shegami.securityservice.models;
+
+import lombok.Data;
+
+@Data
+public class Profile {
+
+    private String id;
+    private String email;
+    private String Username;
+
 }

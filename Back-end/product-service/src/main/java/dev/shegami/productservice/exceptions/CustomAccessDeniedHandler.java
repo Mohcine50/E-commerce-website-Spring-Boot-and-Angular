@@ -1,4 +1,4 @@
-package dev.shegami.securityservice.exceptions;
+package dev.shegami.productservice.exceptions;
 
 import com.nimbusds.jose.shaded.gson.JsonObject;
 import jakarta.servlet.ServletException;

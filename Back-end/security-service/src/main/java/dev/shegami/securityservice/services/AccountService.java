@@ -1,7 +1,9 @@
-package com.shegami.securityJwt.services;
+package dev.shegami.securityservice.services;
 
-import com.shegami.securityJwt.entities.AppUser;
-import com.shegami.securityJwt.entities.Role;
+
+
+import dev.shegami.securityservice.entities.AppUser;
+import dev.shegami.securityservice.entities.Role;
 
 import java.util.List;
 

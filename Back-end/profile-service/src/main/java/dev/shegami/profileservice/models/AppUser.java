@@ -1,7 +1,5 @@
-package dev.shegami.cartservice.models;
+package dev.shegami.profileservice.models;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.ArrayList;

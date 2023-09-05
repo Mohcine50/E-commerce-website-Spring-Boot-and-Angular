@@ -1,4 +1,4 @@
-package com.shegami.securityJwt.models;
+package dev.shegami.securityservice.models;
 
 import lombok.Data;
 

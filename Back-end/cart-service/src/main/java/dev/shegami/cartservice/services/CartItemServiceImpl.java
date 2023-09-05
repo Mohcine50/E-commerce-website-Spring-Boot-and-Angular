@@ -1,2 +1,4 @@
-package dev.shegami.cartservice.services;public class CartItemServiceImpl {
+package dev.shegami.cartservice.services;
+
+public class CartItemServiceImpl implements CartItemService {
 }

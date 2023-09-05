@@ -1,4 +1,4 @@
-package dev.shegami.securityservice.exceptions;
+package dev.shegami.orderservice.exceptions;
 
 public class ApiRequestException extends RuntimeException{
     public ApiRequestException(String message) {

@@ -1,7 +1,9 @@
-package com.shegami.securityJwt.entities;
+package dev.shegami.securityservice.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.shegami.securityservice.models.Product;
+import dev.shegami.securityservice.models.Profile;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,16 +37,12 @@ public class AppUser {
     @ManyToMany(fetch = FetchType.EAGER)
     private Collection<Role> roles = new ArrayList<>();
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private Collection<Absence> absences = new ArrayList<>();
+    @Transient
+    private Profile profile;
+    private String profileId;
+    @Transient
+    private Collection<Product> products;
+    private Collection<String> productId;
 
-    @JsonIgnore
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private Collection<Notification> notifications = new ArrayList<>();
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "manager", fetch = FetchType.EAGER)
-    private Collection<Approval> approvals = new ArrayList<>();
 
 }

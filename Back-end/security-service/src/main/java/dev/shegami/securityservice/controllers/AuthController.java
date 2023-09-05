@@ -1,12 +1,12 @@
-package com.shegami.securityJwt.controllers;
+package dev.shegami.securityservice.controllers;
 
-import com.shegami.securityJwt.entities.AppUser;
-import com.shegami.securityJwt.entities.Role;
-import com.shegami.securityJwt.exceptions.NotFoundException;
-import com.shegami.securityJwt.models.AuthManager;
-import com.shegami.securityJwt.models.RegisterAuthManager;
-import com.shegami.securityJwt.repositories.AppUserRepository;
-import com.shegami.securityJwt.services.AccountService;
+
+import dev.shegami.securityservice.entities.AppUser;
+import dev.shegami.securityservice.exceptions.NotFoundException;
+import dev.shegami.securityservice.models.AuthManager;
+import dev.shegami.securityservice.models.RegisterAuthManager;
+import dev.shegami.securityservice.repositories.AppUserRepository;
+import dev.shegami.securityservice.services.AccountService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -23,15 +23,11 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.oauth2.jwt.JwtClaimsSet;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -41,6 +37,7 @@ import java.util.stream.Collectors;
 @RequestMapping("api/auth")
 @AllArgsConstructor
 @Transactional
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class AuthController {
 
     private final JwtEncoder jwtEncoder;
@@ -55,7 +52,7 @@ public class AuthController {
         Map<String, String> map = new HashMap<>();
 
         accountService.addNewUser(new AppUser(null, registerAuthManager.getUsername(), registerAuthManager.getEmail(),
-                registerAuthManager.getPassword(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+                registerAuthManager.getPassword(), new ArrayList<>(), null,null, null,null));
 
 
         map.put("Message", "REGISTER SUCCESSFULLY");

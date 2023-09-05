@@ -1,12 +1,12 @@
-package dev.shegami.cartservice.feignClients;
+package dev.shegami.profileservice.feignClients;
 
 
-import dev.shegami.cartservice.models.AppUser;
+import dev.shegami.profileservice.models.AppUser;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient("SECURITY-SERVICE")
+@FeignClient(name = "SECURITY-SERVICE", contextId = "PROFILE-SECURITY")
 public interface AccountServiceClient {
 
     @GetMapping("api/user/{username}")
