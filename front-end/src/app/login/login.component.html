@@ -1,0 +1,36 @@
+<div class="flex flex-col items-center justify-center gap-6 p-10">
+    <h1 class="text-4xl font-bold">Login</h1>
+    <form
+        action="POST"
+        class="flex flex-col gap-4 w-[400px]"
+        (ngSubmit)="login($event)"
+        [formGroup]="loginForm"
+    >
+        <input
+            class="px-4 py-3 border border-gray-400 rounded-md"
+            type="text"
+            name="username"
+            id="username"
+            placeholder="Username"
+            formControlName="username"
+        />
+        <input
+            class="px-4 py-3 border border-gray-400 rounded-md"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+            formControlName="password"
+        />
+        <button
+            type="submit"
+            class="px-5 py-3 bg-[#F3A847] rounded-lg drop-shadow-[0_10px_8px_rgba(243,169,73,0.50)] text-white"
+        >
+            Login
+        </button>
+    </form>
+    <p>
+        You don't have an account
+        <a [routerLink]="['/register']" class="text-[#F3A847]">Register</a>
+    </p>
+</div>

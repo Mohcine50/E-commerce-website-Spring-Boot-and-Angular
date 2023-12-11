@@ -1,0 +1,43 @@
+<div class="flex flex-col items-center justify-center gap-6 p-10">
+    <h1 class="text-4xl font-bold">Create an account</h1>
+    <form action="" class="flex flex-col gap-4 w-[400px]">
+        <input
+            class="px-4 py-3 border border-gray-400 rounded-md"
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Your Name"
+        />
+        <input
+            class="px-4 py-3 border border-gray-400 rounded-md"
+            type="text"
+            name="email"
+            id="email"
+            placeholder="E-mail"
+        />
+        <input
+            class="px-4 py-3 border border-gray-400 rounded-md"
+            type="password"
+            name="password"
+            id="password"
+            placeholder="Password"
+        />
+        <input
+            class="px-4 py-3 border border-gray-400 rounded-md"
+            type="password"
+            name="confirmPassword"
+            id="confirmPassword"
+            placeholder="Confirm your Password"
+        />
+        <button
+            type="submit"
+            class="px-5 py-3 bg-[#F3A847] rounded-lg drop-shadow-[0_10px_8px_rgba(243,169,73,0.50)] text-white"
+        >
+            Register
+        </button>
+    </form>
+    <p>
+        Already have an account
+        <a [routerLink]="['/login']" class="text-[#F3A847]">Login</a>
+    </p>
+</div>

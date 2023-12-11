@@ -1,0 +1,88 @@
+<div class="text-white bg-slate-950 font-ember">
+    <div class="flex items-center justify-between p-3">
+        <div>
+            <a routerLink="/">
+                <h1 class="text-xl font-extrabold font-bookerly">
+                    Shopi<span class="text-[#F3A847]">Ly</span>
+                </h1>
+            </a>
+        </div>
+        <form
+            class="w-[340px] flex rounded-md overflow-hidden"
+            [formGroup]="searchForm"
+            (submit)="handleSubmit()"
+        >
+            <input
+                class="flex-grow px-3 py-2 text-black outline-none"
+                type="text"
+                name="searchQuery"
+                id="search"
+                placeholder="Search for product"
+                formControlName="searchQuery"
+            />
+            <button type="submit" class="p-3 bg-[#F3A847]">
+                <fa-icon [icon]="faMagnifyingGlass"></fa-icon>
+            </button>
+        </form>
+        <div>
+            <ul class="flex items-center gap-2">
+                <li
+                    [ngClass]="{
+                        'text-[#F3A847]': selectedPage === 'login'
+                    }"
+                    *ngIf="!authService.isAuth; else account"
+                >
+                    <a routerLink="/login">
+                        <span class="mr-2">Sign In</span
+                        ><fa-icon [icon]="faUser"></fa-icon>
+                    </a>
+                </li>
+
+                <ng-template #account>
+                    <div class="flex flex-col items-end">
+                        <a
+                            routerLink="/account"
+                            [ngClass]="{
+                                'text-[#F3A847]': selectedPage === 'account'
+                            }"
+                        >
+                            <span class="mr-2">My Account</span
+                            ><fa-icon [icon]="faUser"></fa-icon>
+                        </a>
+                        <a class="cursor-pointer" (click)="logout()">
+                            <span class="mr-2">Logout</span
+                            ><fa-icon [icon]="faRightFromBracket"></fa-icon>
+                        </a>
+                    </div>
+                </ng-template>
+
+                <li [ngClass]="{ 'text-[#F3A847]': selectedPage === 'cart' }">
+                    <a routerLink="/cart">
+                        <span class="mr-2">Cart</span
+                        ><fa-icon [icon]="faCart"></fa-icon>
+                        <span
+                            class="inline-flex items-center justify-center w-5 h-5 text-white bg-red-600 rounded-full"
+                            >{{ cartService.numberOfProdsOnCart }}
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <nav class="flex items-center justify-center p-2 px-3 bg-slate-700">
+        <ul class="flex gap-4">
+            <li [ngClass]="{ 'text-[#F3A847]': selectedPage === '' }">
+                <a routerLink="/">Home</a>
+            </li>
+            <li [ngClass]="{ 'text-[#F3A847]': selectedPage === 'shop' }">
+                <a routerLink="/shop">Shop</a>
+            </li>
+            <li [ngClass]="{ 'text-[#F3A847]': selectedPage === 'blog' }">
+                <a routerLink="/blog">Blog</a>
+            </li>
+            <li [ngClass]="{ 'text-[#F3A847]': selectedPage === 'faq' }">
+                <a routerLink="/faq">FAQ</a>
+            </li>
+        </ul>
+    </nav>
+</div>

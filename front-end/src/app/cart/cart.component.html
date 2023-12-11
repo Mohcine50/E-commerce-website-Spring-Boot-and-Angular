@@ -1,0 +1,58 @@
+<div class="flex flex-col gap-4 p-3">
+    <div class="flex items-center justify-center gap-2">
+        <fa-icon [icon]="cartIcon" class="text-2xl"></fa-icon>
+        <h1 class="text-3xl text-center">My Cart</h1>
+    </div>
+    <div *ngIf="productsCart.length == 0">
+        <h1 class="text-center text-xl font-ember font-medium">
+            You don't have any product on your cart
+        </h1>
+    </div>
+    <div class="grid grid-cols-[2fr_1fr]" *ngIf="productsCart.length > 0">
+        <div class="p-3">
+            <h2 class="text-xl">Products</h2>
+            <div class="flex flex-col gap-3 p-3">
+                <div
+                    *ngFor="let product of productsCart"
+                    class="flex items-center gap-3"
+                >
+                    <img
+                        src="{{ product.product.imageUrl }}"
+                        alt="{{ product.product.title }}"
+                        class="w-10 h-10 bg-cover border border-gray-300 rounded-md"
+                    />
+                    <h2>{{ product.product.title }}</h2>
+                    <span class="ml-auto">{{ product.qte }}</span>
+                    <button
+                        class="w-6 h-6 rounded-md bg-[#F3A847] flex items-center justify-center text-white"
+                        (click)="deleteProductFromCart(product.product)"
+                    >
+                        <fa-icon [icon]="deleteIcon" class="text-2xl"></fa-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col gap-4 p-3">
+            <h2 class="text-xl">Checkout Summary</h2>
+            <div class="flex flex-col gap-3">
+                <h3>Subtotal: {{ total }}$</h3>
+                <div class="flex flex-col gap-2">
+                    <h4>Add note to seller:</h4>
+                    <textarea
+                        type="text"
+                        name="note"
+                        id="note"
+                        placeholder="YOUR NOTE"
+                        class="p-2 border-2 border-gray-500 rounded-lg outline-none min-h-[120px]"
+                    ></textarea>
+                </div>
+            </div>
+
+            <button
+                class="px-5 py-3 w-max bg-[#F3A847] rounded-lg drop-shadow-[0_10px_8px_rgba(243,169,73,0.75)] text-white ml-auto mt-4"
+            >
+                Proceed to checkout
+            </button>
+        </div>
+    </div>
+</div>

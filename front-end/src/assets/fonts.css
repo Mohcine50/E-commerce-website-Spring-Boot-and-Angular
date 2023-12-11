@@ -1,0 +1,10 @@
+/*Ember Font import*/
+@font-face {
+    font-family: "Ember";
+    src: url(./fonts/Ember/AmazonEmber_Rg.ttf) format("truetype");
+}
+/*Bookerly Font import*/
+@font-face {
+    font-family: "Bookerly";
+    src: url(./fonts/Bookerly/Bookerly-Regular.ttf) format("truetype");
+}

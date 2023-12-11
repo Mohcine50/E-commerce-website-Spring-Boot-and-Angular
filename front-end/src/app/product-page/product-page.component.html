@@ -1,0 +1,68 @@
+<div class="m-10">
+    <div class="flex gap-10 justify-evenly">
+        <div class="flex flex-col gap-3">
+            <img
+                src="{{ product?.imageUrl }}"
+                alt="product image"
+                class="max-w-lg h-[512px]"
+            />
+            <div class="flex gap-3">
+                <img
+                    src="../../assets/images/product.jpg"
+                    alt="product image"
+                    class="max-w-[100px]"
+                />
+                <img
+                    src="../../assets/images/product.jpg"
+                    alt="product image"
+                    class="max-w-[100px]"
+                />
+                <img
+                    src="../../assets/images/product.jpg"
+                    alt="product image"
+                    class="max-w-[128px] rounded-md bg-cover h-32"
+                />
+            </div>
+        </div>
+        <div class="flex flex-col gap-5 m-10">
+            <h3 class="text-[#F3A847]">{{ product?.brand }}</h3>
+            <h1 class="text-2xl font-semibold">{{ product?.title }}</h1>
+            <p class="text-gray-600">
+                {{ product?.description }}
+            </p>
+            <div>
+                <h2 class="ml-5 text-xl font-semibold">99.88$</h2>
+                <h2 class="ml-5 text-lg font-medium text-gray-500 line-through">
+                    {{ product?.price }}
+                </h2>
+            </div>
+            <div class="flex gap-3">
+                <div class="flex overflow-hidden rounded-lg">
+                    <button
+                        class="text-[#F3A847] bg-slate-300 p-2 px-4 font-bold"
+                        (click)="handleMinusProdCartQua()"
+                    >
+                        -
+                    </button>
+                    <span class="p-2 px-4 bg-slate-300">{{
+                        prdCartQuantity
+                    }}</span>
+                    <button
+                        class="text-[#F3A847] bg-slate-300 p-2 px-4 font-bold"
+                        (click)="handlePlusProdCartQua()"
+                    >
+                        +
+                    </button>
+                </div>
+                <button
+                    class="bg-[rgb(243,169,73)] py-2 px-10 text-white rounded-lg drop-shadow-[0_10px_8px_rgba(243,169,73,0.75)]"
+                    (click)="handleAddTocart()"
+                >
+                    Add to cart
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="">Related Products</div>
+</div>

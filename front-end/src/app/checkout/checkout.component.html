@@ -1,0 +1,91 @@
+<div class="grid grid-cols-2">
+    <div class="flex flex-col gap-4 px-4 py-4">
+        <h1 class="text-4xl">Checkout</h1>
+        <h5 class="text-base text-gray-700">
+            <span class="text-[#F3A847]">Cart</span> >
+            <span>Information</span> > <span>Shipping</span> >
+            <span>Payment</span>
+        </h5>
+
+        <div class="">
+            <div class="flex justify-between" *ngIf="!isAuthenticated">
+                <h4>Contact</h4>
+                <p>
+                    Already Have an account
+                    <span class="text-[#F3A847] underline"
+                        ><a routerLink="/login">Login</a></span
+                    >
+                </p>
+            </div>
+            <div>
+                <h4 class="text-xl">Shipping address</h4>
+                <form action="" class="flex flex-col gap-4">
+                    <select
+                        name="contry"
+                        id="contry"
+                        class="px-4 py-3 border border-gray-400 rounded-md"
+                    >
+                        <option>USA</option>
+                        <option>UK</option>
+                        <option>CANADA</option>
+                    </select>
+                    <div class="grid grid-cols-2 gap-1">
+                        <input
+                            class="px-4 py-3 border border-gray-400 rounded-md"
+                            type="text"
+                            name="firstName"
+                            id="firstName"
+                            placeholder="First Name"
+                        />
+                        <input
+                            class="px-4 py-3 border border-gray-400 rounded-md"
+                            type="text"
+                            name="lastName"
+                            id="lastName"
+                            placeholder="Last Name"
+                        />
+                    </div>
+                    <input
+                        class="px-4 py-3 border border-gray-400 rounded-md"
+                        type="text"
+                        name="address"
+                        id="address"
+                        placeholder="Address"
+                    />
+                    <input
+                        class="px-4 py-3 border border-gray-400 rounded-md"
+                        type="text"
+                        name="appartement"
+                        id="appartement"
+                        placeholder="Apartment, suite, etc. (optional)"
+                    />
+                    <div class="grid grid-cols-3 gap-1">
+                        <input
+                            class="px-4 py-3 border border-gray-400 rounded-md"
+                            type="text"
+                            name="city"
+                            id="city"
+                            placeholder="City"
+                        />
+                        <input
+                            class="px-4 py-3 border border-gray-400 rounded-md"
+                            type="text"
+                            name="state"
+                            id="state"
+                            placeholder="State"
+                        />
+                        <input
+                            class="px-4 py-3 border border-gray-400 rounded-md"
+                            type="text"
+                            name="zipCode"
+                            id="zipCode"
+                            placeholder="Zip Code"
+                        />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div></div>
+</div>
